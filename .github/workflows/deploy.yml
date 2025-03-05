@@ -23,7 +23,7 @@ jobs:
       run: |
         python3 -m venv venv
         source venv/bin/activate
-        pip install -r requirements.txt
+        pip install --platform manylinux2014_x86_64 -r requirements.txt
     - name: Deploy to Lambda
       run: |
         # Package the Lambda function and deploy it using AWS CLI
