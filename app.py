@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, APIRouter
 from pydantic import BaseModel
 from transformers import pipeline
-
+from mangum import Mangum
 # Initialize the FastAPI app
 app = FastAPI()
 router = APIRouter()
@@ -29,3 +29,5 @@ def doc():
     return app.__doc__
 
 app.include_router(router, prefix="/sentiment")
+
+handler = Mangum(app)
