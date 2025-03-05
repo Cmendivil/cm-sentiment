@@ -27,8 +27,10 @@ jobs:
     - name: Deploy to Lambda
       run: |
         # Package the Lambda function and deploy it using AWS CLI
+        # Package the Lambda function and deploy it using AWS CLI
         mkdir deployment-package
         cp -r *.py deployment-package/
+        cp -r venv/lib/python*/site-packages/* deployment-package/
         cd deployment-package
         zip -r function.zip .  # Create a ZIP of your Lambda function's code
         aws lambda update-function-code \

@@ -66,4 +66,4 @@ def doc():
 app.include_router(router, prefix="/sentiment")
 
 # Mangum handler for AWS Lambda
-# handler = Mangum(app)
+handler = Mangum(app)
