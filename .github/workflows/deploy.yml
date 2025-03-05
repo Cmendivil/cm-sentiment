@@ -24,21 +24,6 @@ jobs:
         python3 -m venv venv
         source venv/bin/activate
         pip install -r requirements.txt
-    - name: Create layer Dir
-      run: |
-        mkdir layer
-        cd layer
-        mkdir - p python
-        cp -r ../venv/lib ./python
-        zip -r ../layer.zip python
-        cd ../
-    - name: Publish Layer
-      run: |
-        aws lambda publish-layer-version \
-          --layer-name ml-layer \
-          --zip-file fileb://layer.zip \
-          --compatible-runtimes python3.13
-          --debug
     - name: Deploy to Lambda
       run: |
         # Package the Lambda function and deploy it using AWS CLI
