@@ -21,8 +21,7 @@ app = FastAPI(
 )
 router = APIRouter()
 sia = SentimentIntensityAnalyzer()
-
-origins = os.getenv("ORIGINS")
+origins = os.getenv("ORIGINS").split(",")
 
 # Add CORS middleware
 app.add_middleware(
