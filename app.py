@@ -9,9 +9,9 @@ import nltk
 nltk.data.path.append("/tmp")
 # Ensure VADER lexicon is available
 try:
-    nltk.data.find('sentiment/vader_lexicon.zip', download_dir="/tmp")
+    nltk.data.find('sentiment/vader_lexicon.zip')
 except LookupError:
-    nltk.download('vader_lexicon')
+    nltk.download('vader_lexicon', download_dir="/tmp")
 load_dotenv()
 # Initialize the FastAPI app
 app = FastAPI(
