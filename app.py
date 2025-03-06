@@ -6,10 +6,10 @@ from nltk.sentiment import SentimentIntensityAnalyzer
 from dotenv import load_dotenv
 import os
 import nltk
-
+nltk.data.path.append("/tmp")
 # Ensure VADER lexicon is available
 try:
-    nltk.data.find('sentiment/vader_lexicon.zip')
+    nltk.data.find('sentiment/vader_lexicon.zip', download_dir="/tmp")
 except LookupError:
     nltk.download('vader_lexicon')
 load_dotenv()
