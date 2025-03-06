@@ -3,3 +3,4 @@ mangum
 nltk
 pydantic==1.10.16
 uvicorn
+python-dotenv
