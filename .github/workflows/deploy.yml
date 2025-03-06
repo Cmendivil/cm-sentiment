@@ -12,6 +12,7 @@ jobs:
     - name: Checkout code
       env:
         ORIGINS: ARRAY=(${vars.ORIGINS//,/ })
+        echo "Item: $ORIGINS"
       uses: actions/checkout@v2
     - name: Set up AWS CLI
       uses: aws-actions/configure-aws-credentials@v2
