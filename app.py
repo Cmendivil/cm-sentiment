@@ -3,7 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from mangum import Mangum
 from nltk.sentiment import SentimentIntensityAnalyzer
-
+from dotenv import load_dotenv
+import os
 import nltk
 
 # Ensure VADER lexicon is available
@@ -11,7 +12,7 @@ try:
     nltk.data.find('sentiment/vader_lexicon.zip')
 except LookupError:
     nltk.download('vader_lexicon')
-
+load_dotenv()
 # Initialize the FastAPI app
 app = FastAPI(
     title="Sentiment API",
@@ -21,9 +22,7 @@ app = FastAPI(
 router = APIRouter()
 sia = SentimentIntensityAnalyzer()
 
-origins = [
-    "http://localhost:3000"
-]
+origins = os.getenv("ORIGINS")
 
 # Add CORS middleware
 app.add_middleware(
